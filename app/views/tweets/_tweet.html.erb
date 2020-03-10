@@ -1,0 +1,27 @@
+      <div class="contents_post">
+        <div class="content_post">
+          <div class="pf">
+            <p><%= image_tag 'mypage.png' %></p>
+            <a href="/users/<%= tweet.user_id %>">
+              <p>@<%= tweet.user.nickname %></p>
+            </a>
+          </div>
+          <div class="more">
+            <ul id="more_list">
+              <li><%= image_tag 'arrow_top.png' %>
+                <ul>
+                  <li><%= link_to '詳細', "/tweets/#{tweet.id}", method: :get %></li>
+                  <li><%= link_to '編集', "/tweets/#{tweet.id}/edit", method: :get %></li>
+                  <li><%= link_to '削除', "/tweets/#{tweet.id}", method: :delete %></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="content_pic" style="background-image: url(<%= tweet.image %>);">
+          <p><%= simple_format(tweet.catchphrase) %></p>
+        </div>
+      </div>
+      
+      
+     

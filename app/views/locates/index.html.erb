@@ -1,0 +1,26 @@
+<div class="ZZZ">
+  <div class="XX">
+    <h3>捜索中ペット絞り込み検索</h3>
+    <%= form_tag(locates_path, :method => 'get' ) do %>
+      <span><%= label_tag :area, "都道府県：" %></span>
+      <%= text_field_tag :area %>
+      <span><%= label_tag :kind, "種類：" %></span>
+      <%= radio_button_tag :kind, "犬"%>犬 <%= radio_button_tag :kind, "猫"%>猫 <%= radio_button_tag :kind, "うさぎ"%>うさぎ <%= radio_button_tag :kind, "その他"%>その他<br>
+      <span><%= label_tag :color, "カラー：" %></span>
+      <%= radio_button_tag :color, "黒系" %>黒系 <%= radio_button_tag :color, "白系" %>白系 <%= radio_button_tag :color, "茶系" %>茶系 <%= radio_button_tag :color, "その他" %>その他<br>
+      <span><%= label_tag :gender, "性別：" %></span>
+      <%= radio_button_tag :gender, "男の子" %>男の子 <%= radio_button_tag :gender, "女の子" %>女の子<br>
+      <span><%= label_tag :size, "体格：" %></span>
+      <%= radio_button_tag :size, "大型" %>大型 <%= radio_button_tag :size, "中型" %>中型 <%= radio_button_tag :size, "小型" %>小型<br>
+      <span><%= label_tag :collar, "首輪：" %></span>
+      <%= radio_button_tag :collar, "有" %>有 <%= radio_button_tag :collar, "無" %>無 <%= radio_button_tag :collar, "不明" %>不明<br>
+      <%= submit_tag '検索する', class: "btn2" %>
+    <% end %>
+  </div>
+  <div class="YY">
+    <% @locates.each do |locate|%>
+      <%= render partial: "locate", locals: { locate: locate } %>
+    <% end %>
+    <%= paginate(@locates) %>
+  </div>
+</div>

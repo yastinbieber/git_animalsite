@@ -1,0 +1,10 @@
+<div class="contents-box">
+  <div class="container">
+    <%= form_tag("/tweets/#{@tweet.id}", method: :patch ) do %>
+      <input type="text" name="image" value="<%= @tweet.image %>" placeholder="Image Url" style="border:2px green dotted;" autofocus="true">
+      <textarea name="catchphrase" placeholder="catchphrase" style="border:2px green dotted;" rows="5" cols="10"><%= @tweet.catchphrase %></textarea>
+      <textarea name="text" placeholder="text" style="border:2px green dotted;" rows="10" cols="30"><%= @tweet.text %></textarea>
+      <input type="submit" value="編集内容を送信する">
+    <% end %>
+  </div>
+</div>

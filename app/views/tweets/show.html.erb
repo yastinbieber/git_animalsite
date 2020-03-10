@@ -1,0 +1,39 @@
+<div class="contents-box">
+  <div class="contents__post">
+    <div class="content__post">
+      <p><%= image_tag 'mypage.png' %></p>
+      <a href="/users/<%= @tweet.user_id %>">
+        <p>@<%= @tweet.user.nickname %></p>
+      </a>
+    </div>
+    <div class="content__pic" style="background-image: url(<%= @tweet.image %>);">
+      <div class="content__p-text">
+        <p><%= simple_format(@tweet.catchphrase) %></p>
+      </div>
+    </div>
+    <div class="content__text">
+      <span>@<%= @tweet.user.nickname %></span>
+      <p><%= @tweet.text %></p>
+    </div>
+  </div>
+  
+  <div class="container"> 
+    <% if current_user %>
+      <%= form_tag("/tweets/#{@tweet.id}/comments", method: :post) do %>
+        <textarea name="text" placeholder="コメントする" style="border:2px green dotted;" rows="2" cols="30"></textarea>
+        <input type="submit" value="コメントを投稿する">
+      <% end %>
+    <% end %>
+    <div class="comments">   
+      <h4>＜コメント一覧＞</h4>
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+          <p>
+            <strong>@<%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+            <%= comment.text %>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

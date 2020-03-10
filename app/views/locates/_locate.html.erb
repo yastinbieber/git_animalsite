@@ -1,0 +1,29 @@
+      <div class="YY-box">
+        <div class="YY-box-top">
+          <div class="pf">
+            <p><%= image_tag 'mypage.png' %></p>
+            <a href="/users/<%= locate.user_id %>">
+              <p>@nickname</p>
+            </a>
+          </div>
+          <div class="more">
+            <ul id="more_list">
+              <li><%= image_tag 'arrow_top.png' %>
+                <ul>
+                  <li><%= link_to '詳細', "/locates/#{locate.id}", method: :get %></li>
+                  <li><%= link_to '編集', "/locates/#{locate.id}/edit", method: :get %></li>
+                  <li><%= link_to '削除', "/locates/#{locate.id}", method: :delete %></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="YY-box-bottom" style="background-image: url(<%= locate.image %>);">
+          <p>名前：<%= simple_format(locate.petname) %></p><br>
+          <p>エリア：<%= simple_format(locate.area) %></p><br>
+          <p>種類：<%= simple_format(locate.kind) %></p><br>
+          <p>性別：<%= simple_format(locate.gender) %></p><br>
+          <p>年齢：<%= simple_format(locate.age) %></p><br>
+          <p>首輪：<%= simple_format(locate.collar) %></p>
+        </div>
+      </div>

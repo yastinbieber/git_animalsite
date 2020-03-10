@@ -1,0 +1,43 @@
+<div class="contents-box">
+  <div class="AAABBB">
+    <div class="AAA">
+      <% if @user.image.nil? %>
+        <%= image_tag 'mypage.png', class: 'image' %>
+      <% else %>
+        <%= image_tag rails_blob_path(@user.image), class: 'image' %>
+      <% end %>
+    </div>
+    <div class="BBB">
+      <p>@<%= @nickname %></p>
+      <% if current_user.id == @user.id %>
+        <%= link_to "プロフィール編集", edit_user_path(current_user), {:class => "btn3" } %>
+      <% end %>
+      <br><a>🔗<%= link_to @user.website, (@user.website) %></a><br>
+      <br><span><%= @user.selfintroduction %></span>
+    </div>
+  </div>
+  <div class="slick1">
+    <p><%= @nickname %>さんのタイムライン投稿一覧</p><br>
+    <% @tweets.each do |tweet| %>
+      <%= render partial: "tweets/tweet", locals: { tweet: tweet } %>
+    <% end %>
+    <p><%= @nickname %>さんの捜索投稿一覧</p><br>
+    <% @locates.each do |locate| %>
+      <%= render partial: "locates/locate", locals: { locate: locate } %>
+    <% end %>
+    <p><%= @nickname %>さんの保護投稿一覧</p><br>
+    <% @keeps.each do |keep| %>
+      <%= render partial: "keeps/keep", locals: { keep: keep } %>
+    <% end %>
+  </div>
+    <script src="slick.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+          $('.slick1').slick({
+            autoplay: true,
+            dots: true,
+          });
+        });
+    </script>
+</div>
+

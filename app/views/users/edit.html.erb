@@ -1,0 +1,15 @@
+<div class="contents-box">
+  <div class="container">
+    <%= form_for current_user do |f| %>
+      <span><%= f.label :image, "画像アップロード：" %></span>
+      <%= f.file_field :image %><br>
+      <span><%= f.label :nickname, "nickname：" %></span>
+      <%= f.text_field :nickname, placeholder: "nickname" %><br>
+      <span><%= f.label :website, "website：" %></span>
+      <%= f.text_field :website, placeholder: "website" %><br>
+      <span><%= f.label :selfintroduction, "自己紹介：" %></span>
+      <%= f.text_area :selfintroduction, class:"PPP" %><br>
+      <%= f.submit "送信", class: "btn2" %>
+    <% end %>
+  </div>
+</div>

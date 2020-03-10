@@ -1,0 +1,29 @@
+<div class="contents-box">
+  <h2>Log in</h2>
+  <div class="container">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field">
+      <span><%= f.label :email %></span><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"PPP" %>
+    </div>
+  
+    <div class="field">
+      <span><%= f.label :password %></span><br />
+      <%= f.password_field :password, autocomplete: "current-password", class:"PPP" %>
+    </div>
+  
+    <% if devise_mapping.rememberable? %>
+      <div class="field">
+        <span><%= f.label :remember_me %></span><br />
+        <p><%= f.check_box :remember_me %></p>
+      </div>
+    <% end %>
+  
+    <div class="field">
+      <%= f.submit "Log in", class: "btn2" %>
+    </div>
+  <% end %>
+  </div>
+</div>
+
+<%= render "devise/shared/links" %>

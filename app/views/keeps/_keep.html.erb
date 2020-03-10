@@ -1,0 +1,25 @@
+<div class="YY-box">
+  <div class="YY-box-top">
+    <div class="pf">
+        <p><%= image_tag 'mypage.png' %></p>
+        <p>@nickname</p>
+    </div>
+    <div class="more">
+      <ul id="more_list">
+        <li><%= image_tag 'arrow_top.png' %>
+          <ul>
+            <li><%= link_to '詳細', "/keeps/#{keep.id}", method: :get %></li>
+            <li><%= link_to '編集', "/keeps/#{keep.id}/edit", method: :get %></li>
+            <li><%= link_to '削除', "/keeps/#{keep.id}", method: :delete %></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="YY-box-bottom" style="background-image: url(<%= keep.image %>);">
+    <p>エリア：<%= simple_format(keep.area) %></p><br>
+    <p>種類：<%= simple_format(keep.kind) %></p><br>
+    <p>性別：<%= simple_format(keep.gender) %></p><br>
+    <p>首輪：<%= simple_format(keep.collar) %></p>
+  </div>
+</div>

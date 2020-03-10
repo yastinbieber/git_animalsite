@@ -1,0 +1,19 @@
+<div class="contents-box">
+  <div class="container">
+    <%= form_for(@tweet) do |f| %>
+    <div class="field">
+      <span><%= f.label :image, "画像URL：" %></span></br>
+      <%= f.text_field :image %>
+    </div>
+    <div class="field">
+      <span><%= f.label :catchphrase, "キャッチフレーズ：　※写真上及びタイムライン上に反映されます" %></span></br>
+      <%= f.text_area :catchphrase, class:"PPP" %>
+    </div>
+    <div class="field">
+      <span><%= f.label :text, "テキスト：　※詳細ページ上に反映されます" %></span></br>
+      <%= f.text_area :text, class:"PPP" %>
+    </div>
+      <%= f.submit "送信", class: "btn2" %>
+    <% end %>
+  </div>
+</div>

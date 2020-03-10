@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Team PeAce</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" >
+    <script src="https://cdn.jsdelivr.net/npm/mailtoui@1.0.2/dist/mailtoui-min.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <div class="header">
+        <div class="header-top">
+          <div class="title">
+            <a href="/">Team PeAce</a>
+          </div>
+          <% if user_signed_in? %>
+          <div class="menu">        
+            <ul id="dropmenu">
+              <li><a href="">mypage</a>
+                <ul>
+                  <li><%= link_to "マイページ", user_path(current_user) %></li>
+                  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+                </ul>
+              </li>
+              <li><a href=''>ペット捜索</a>
+                <ul>
+                  <li><a href="/locates/new">ペット捜索フォーム</a></li>
+                  <li><a href="/locates">捜索一覧</a></li>
+                </ul>
+              </li>
+              <li><a href="">動物一時保護</a>
+                <ul>
+                  <li><a href="/keeps/new">保護内容記入フォーム</a></li>
+                  <li><a href="/keeps">一時保護一覧</a></li>
+                </ul>
+              </li>
+              <li><a href="/tops/show">里親になる</a>
+                <ul>
+                  <li><a href="/tops/show">保健所一覧</a></li>
+                </ul>
+              </li>
+              <li><a href="">タイムライン</a>
+                <ul>
+                  <li><a href="/tweets">タイムラインへ行く</a></li>
+                  <li><a href="tweets/new">タイムラインへ投稿する</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <% else %>
+          <div class="menu">
+            <ul id="dropmenu">
+              <li><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>
+              <li><%= link_to "新規登録", new_user_registration_path, class: 'post' %></li>
+            </ul>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </header>
+    
+    <%= yield %>
+  </body>
+</html>
+    
+    
